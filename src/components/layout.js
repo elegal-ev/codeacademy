@@ -25,6 +25,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
