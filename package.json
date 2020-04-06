@@ -40,6 +40,9 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0",
+    "exlint": "^0.1.6",
     "prettier": "^2.0.2"
   }
 }
