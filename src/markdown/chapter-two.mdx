@@ -1,0 +1,248 @@
+---
+id: chapter-two
+title: Codingeinheit 2 - Funktionen und Scope
+sidebar_label: Funktionen und Scope
+---
+
+import CodeBlock from './CodeBlock';
+
+# Funktionen
+
+## Was ist eine Funktion?
+
+Eine Funktion ist eine benannte Prozedur. Dies ermöglicht uns, Code, welchen wir zuvor geschrieben haben, wiederzuverwenden.
+
+Funktionen werden mit dem Begriff `def` (engl. define) eingeleitet:
+
+<CodeBlock frame="https://trinket.io/embed/python3/d238995f48">
+
+```python
+def hello_world():
+    print("hello world")
+    print("goodbye world")
+
+hello_world() # Funktion ausfuehren
+```
+
+</CodeBlock>
+
+Hierbei stellen die Leerzeichen vor den `print()`-Befehlen dar, was zur Funktion gehört und was nicht. Spiel doch einfach selbst ein wenig mit der Einrückung rum!
+
+Genauso wie bei `print` wird diese einfach mit `()` aufgerufen:
+
+<CodeBlock frame="https://trinket.io/embed/python3/558f1ea49f">
+
+```python
+def hello_world():
+    print("hello world")
+    print("goodbye world")
+
+x = 4
+hello_world()
+y = 5
+```
+
+</CodeBlock>
+
+Die Funktion kopiert ihren Inhalt an die Stelle in den Code, an der wir sie aufrufen.
+Der gerade eben genutze Code ist also äquivalent zu dem unten stehenden.
+
+<CodeBlock frame="https://trinket.io/embed/python3/c4089e331f">
+
+```python
+x = 4
+print("hello world")
+print("goodbye world")
+y = 5
+```
+
+</CodeBlock>
+
+**Du bist dran.**
+
+Schreibe eine Funktion, welche "eLegal ist toll" ausgibt und nenne sie "eLegal"
+
+<CodeBlock frame="https://trinket.io/embed/python3/82d519f1d3">
+
+```python
+from elegal_assert import *
+# import ignorieren
+
+# hier kommt deine Funktion "eLegal" hin
+#----- Funktionsanfang
+def eLegal():
+  print("eLegal ist toll")
+
+
+
+#----- Funktionsende
+x = eLegal
+
+
+# Nicht konfigurieren
+write_a_function_check(x)
+
+```
+
+</CodeBlock>
+
+## Parameter
+
+Betrachten wir folgende Problemstellung:
+
+Anwalt A hat in seiner Kanzelei zahlreiche Mandanten, die er täglich mit einer netten Email begrüsst. Nachdem durch seine Kooperation mit eLegal e.V. sein Mandantenstamm exponentielles Wachstum erlebt hat, schrieb er Funktionen, die diese Aufgabe für ihn trivialisieren. Allerdings muss er für jeden seiner Mandanten eine komplett neue Funktion schreiben.
+
+<CodeBlock frame="https://trinket.io/embed/python3/2ddfb0fbc5">
+
+```python
+def gruss_an_alice():
+    print("Gruss Alice!")
+def gruss_an_bob():
+    print("Gruss Bob")
+# ...
+# ...
+```
+
+</CodeBlock>
+
+Gott sei Dank gibt es hierfür Funktionsargumente!
+
+Verwirrenderweise wird oft zwischen "Parametern" und "Argumenten" unterschieden.
+Bei Parametern handelt es sich um die Werte, welche beim erstmaligen definieren der Funktion oben angegeben werden. Beispielsweise ist "name" in der Funktion "gruss" unten ein Parameter. 
+Bei Argumenten handelt es sich um die Daten, mit der mann die Funktion in der Ausführung dann aufruft. 
+z.B. gruss("eLegal") - hier wäre eLegal ein Funktionsargument.
+
+<CodeBlock frame="https://trinket.io/embed/python3/b4b47cdb96">
+
+```python
+def gruss(name):
+    print("Gruss " + name + "!")
+
+# Analog mit mehreren Parametern
+def langer_gruss(vorname, nachname, titel, wohnort):
+    print("Gruss " + titel + " " + vorname + " "
+          + " " + nachname + " aus " + wohnort )
+
+# Probier doch einmal die Funktionen zu benutzen
+# z.b. gruss("dein name")
+```
+
+</CodeBlock>
+
+## Schlüsselwortargument
+
+Schlüsselwortargumente werden verwendet, um Parametern einen Standardwert zuzuweisen.
+Konkret bedeutet dies, dass die Funktion den Standardwert verwendet, außer man übergibt ein Funktionsargument.
+In diesem Fall wird der Standardwert überschrieben.
+
+<CodeBlock frame="https://trinket.io/embed/python3/9918335033">
+
+```python
+# Diese Funktion efordert zwangsweise die Weitergabe eines Parameters
+def no_keyword(name):
+    print("Hallo "+name)
+# Diese Funktion kann ohne Parameter aufgerufen werden
+def yes_keyword(name="Nutzer"):
+    print("Hallo "+name)
+
+
+# Probiere hier mal ein wenig herum
+no_keyword("Dieser Wert ist nicht optional")
+yes_keyword()
+```
+
+</CodeBlock>
+
+Dies führt dazu, dass no_keyword nicht ohne ein Parameter aufgerufen werden kann.
+`yes_keyword` hingegen schon
+
+<CodeBlock frame="https://trinket.io/embed/python3/bfb13f0131">
+
+```python
+# Diese Funktion efordert zwangsweise die Weitergabe eines Parameters
+def no_keyword(name):
+    print("Hallo "+name)
+# Diese Funktion kann ohne Parameter aufgerufen werden
+def yes_keyword(name="Nutzer"):
+    print("Hallo "+name)
+
+no_keyword("eLegal")
+yes_keyword()
+```
+
+</CodeBlock>
+
+Möchte man im Fall von yes_keyword vom Standard abweichen, so muss man die Funktion lediglich normal aufrufen und ein Parameter angeben. Der Standard wird dann sozusagen überschrieben.
+
+```python
+yes_keyword("Neuer Parameter")
+```
+
+## Rückgabewerte
+
+Damit die Ergebnisse deiner Funktion nicht nach dem printen verloren gehen, gibt es das sogenannte `return`-Schlüsselwort
+
+<CodeBlock frame="https://trinket.io/embed/python3/c297ecd204">
+
+```python
+from elegal_assert import *
+
+def plusZwei(zahl):
+    return zahl+2
+
+sechs = plusZwei(4)
+print(sechs)
+
+
+
+# ------ nicht konfigurieren ------
+check_for_function_double(plusZwei(8))
+```
+
+</CodeBlock>
+
+Versuch einfach mal das obige Beispiel so zu verändern, dass die Funktion die eingegebene Zahl mal sich selbst nimmt!
+
+## Variablengültigkeitsbereich
+
+Parameter und Variablen sind nicht in allen Bereichen des Codes verwendbar, sondern sind auf ihre jeweiligen Bereiche beschränkt.
+
+Betrachten wir hierzu eine Deutschdarstellung.
+
+```python
+begruessung = "Guten Tag"
+verabschiedung = "Auf Wiedersehen"
+```
+
+Jeder hat Zugriff auf Hochdeutsch.
+
+Betrachten wir diese Darstellung nun unter der Voraussetzung, dass sich außerdem Sprachbarrieren gebildet haben, welche hier in Funktionen dargestellt sind.
+
+```python
+begruessung = "Guten Tag"
+verabschiedung = "Auf Wiedersehen"
+
+def bayrisch():
+    bayrische_begruessung = "Griass Di"
+```
+
+Hier kann jeder Bayer auf die allgemeingültige Begrüßung "Guten Tag" zugreifen. Hinzukommend aber auch auf die bayrische.
+Jemand außerhalb des bayrischen Anwendungsbereiches kann dies nicht. Denn er weiß nicht was es bedeutet und kann bayrisch nicht verstehen.
+
+Probiere, zur Veranschaulichung, die Ausführung folgenden Codes. Er sollte eine Fehlermeldung hervorrufen.
+
+<CodeBlock frame="https://trinket.io/embed/python3/3f7c08ce46">
+
+```python
+begruessung = "Guten Tag"
+verabschiedung = "Auf Wiedersehen"
+
+def bayrisch():
+    bayrische_begruessung = "Griass Di"
+
+print(bayrische_begruessung)
+```
+
+</CodeBlock>
+
+Auf die bayrische_begruessung kann nämlich nur innerhalb der Funktion zugegriffen werden.

@@ -1,0 +1,251 @@
+---
+id: chapter-four
+title: Codingeinheit 4 - Listen
+sidebar_label: Listen
+---
+
+import CodeBlock from './CodeBlock';
+
+## Was ist eine Liste?
+
+Eine Liste ist eine geordnete Sammlung von Pythonobjekten.
+
+```python
+jura_starter_kit = ["Bootsschuhe","Polohemd","Montblancstift"]
+```
+
+Die Objekte in der Liste müssen jedoch nicht alle vom selben Typ sein, sondern können auch verschiedene Typen beinhalten.
+
+```python
+verschiedenes = ["ich bin ein string", 12345]
+```
+
+Auf die einzelnen Elemente der Liste kann über den Index zugegriffen werden.
+
+```python
+verschiedenes = ["ich bin ein string", 12345]
+print(verschiedenes[0])
+```
+
+**Achtung!** In der IT Welt fängt man mit dem Zählen bei 0 und nicht bei 1 an.
+
+Probier es einmal selber und wähle "JURA" aus der unten stehenden Liste aus:
+
+<iframe src="https://trinket.io/embed/python3/f3f3b904b8" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+Zuletzt können Listen auch mit dem `+`-Operator verbunden werden. 
+
+<CodeBlock frame="https://trinket.io/embed/python3/24d7dcec12">
+
+```python
+jura_starter_kit = ["Bootsschuhe","Polohemd","Montblancstift"]
+jura_starter_kit2 = ["MacBook", "Airpods"]
+
+print(jura_starter_kit + jura_starter_kit2)
+```
+
+</CodeBlock>
+
+## Listen und Schleifen
+
+Listen kann man auch wie folgt auf `for`-Schleifen anwenden:
+
+<CodeBlock frame="https://trinket.io/embed/python3/c16796572d">
+
+```python
+einkaufszettel = ["BGB", "STGB", "Notizblock", "Taschentücher"]
+
+for produkt in einkaufszettel:
+    print("Du musst noch " + produkt + " kaufen!")
+```
+
+</CodeBlock>
+
+Hierbei kann man sich gesondert `range()` angucken. Die range()-Funktion gibt Objekte wie bspw. Zahlen oder Wörter in einer bestimmten Reihenfolge, automatisch beginnend bei 0 in einer Schritten und endend bei einer benutzerspezifisch vorgegebenen Zahl, wieder. Dies ist zwar intern keine Liste, aber kann einfach zu einer gemacht werden, indem man hierauf die `list()`-Funktion anwendet.
+
+<CodeBlock frame="https://trinket.io/embed/python3/6ddb5efe24">
+
+```python
+print("Range als rangeobjekt: ", range(10))
+print("Range als Listenobjekt: ", list(range(10)))
+```
+
+</CodeBlock>
+
+## Negatives Indexieren
+
+Durch indexieren ist es möglich, gezielt ein Objekt aus der Liste auszuwählen.
+
+Man stelle sich die List wie einen Regler am Herd vor. Die einzelnen Stufen der Wärmezufur sind die Indizes der Listeneinträge.
+
+<CodeBlock frame="https://trinket.io/embed/python3/44cc806c55">
+
+```python
+regler = ["low", "medium low", "medium", "medium high", "high"]
+
+for stufe in range(len(regler)):
+    print(regler[stufe])
+    
+```
+
+</CodeBlock>
+
+Intuitiv könnte man behaupten, dass bei einer Verschiebung des Reglers in die linke Orientierung der Listeneintrag um eins verringert (dekrementiert) wird.
+
+<CodeBlock frame="https://trinket.io/embed/python3/f9326e0c33">
+
+```python
+regler = ["low", "medium low", "medium", "medium high", "high"]
+print(regler[0])
+print(regler[1])
+```
+
+</CodeBlock>
+
+Im Gegensatz dazu ist es auch möglich, den Regler in die entgegengesetzte Richtung zu bewegen. Will man den Regler von der Ausgangsposition also um einen Eintrag nach rechts bewegen, so ist die Ausgangsposition um eins erhöht (inkrementiert).
+
+<CodeBlock frame="https://trinket.io/embed/python3/e95db5de52">
+
+```python
+regler = ["low", "medium low", "medium", "medium high", "high"]
+print(regler[0])
+print(regler[-1])
+```
+
+</CodeBlock>
+
+## Funktionen auf Listen
+
+Zudem gibt es viele praktische Funktionen für Listen!
+
+- `append`:
+  Die Funktion `append()` fügt der Liste am Ende ein neues Element hinzu.
+  Hier ein kleines Beispiel um dich damit vertraut zu machen: 
+
+
+<CodeBlock frame="https://trinket.io/embed/python3/5a183d91ca">
+
+```python
+Vorlesungen = ["Strafrecht I", "Staatsrecht I", "BGB I"]
+
+Vorlesungen.append("Römische Rechtsgeschichte")
+
+print(Vorlesungen)
+```
+
+</CodeBlock>
+
+Und jetzt etwas, für Weggeschrittene:
+
+print(Vorlesungen)
+
+<CodeBlock frame="https://trinket.io/embed/python3/8008720569">
+
+```python
+def fragen_filtern(liste):
+    liste_an_fragen = []
+    for satz in liste:
+        # Hierbei beschreibt satz[-1] das letzte Zeichen von String
+        if satz[-1] == "?":
+            liste_an_fragen.append(satz)
+    return liste_an_fragen
+
+liste_an_saetzen = [
+    "Hallo.",
+    "Wie geht es dir?",
+    "Auf Wiedersehen!",
+    "Welcher Tag ist heute?"
+]
+print(fragen_filtern(liste_an_saetzen))
+```
+
+</CodeBlock>
+
+Hierbei kann das `variable.funktion()` erstmal so interpretiert werden, dass sich die Funktion auf die Variable bezieht.
+
+- `len()`:
+  Gibt die Länge (engl. length) der Liste zurück.
+
+```python
+print(len(["a", "b", "c", "d", "e"])) # 5
+```
+
+- `count()`:
+  Wie oft ist ein einzelnes Element in einer Liste vorhanden.
+
+```python
+punktzahlen = [4, 5, 3, 4, 2, 6, 8, 4]
+print(punktzahlen.count(4)) # 3
+```
+
+- `sort()`:
+  Ordnet die Liste aufsteigend. Hierbei wird die Liste verändert.
+
+```python
+paar_zahlen = [3,1,2,8,5]
+print("Ungeordnet: " + str(paar_zahlen)) # Ungeordnet: [3, 1, 2, 8, 5]
+paar_zahlen.sort()
+print("Geordnet: " + str(paar_zahlen)) # Geordnet: [1, 2, 3, 5, 8]
+```
+
+Zudem gibt es noch viele weitere Methoden, allgemein lohnt es sich immer einfach mal zu googlen!
+
+## Verschachtelte Listen
+
+Zudem können Listen intuitiv verschachtelt werden, oder anders ausgedrückt, Listen können auch Elemente einer Liste sein.
+
+<CodeBlock frame="https://trinket.io/embed/python3/4f3390b261">
+
+```python
+arten_von_juristen = [["ein", "element"], ["Noch", "Eine", "Liste"]]
+
+# Um die erste Liste zu erreichen
+print(arten_von_juristen[0])
+# Um das Wort "ein" zu erreichen
+print((arten_von_juristen[0])[0])
+```
+
+</CodeBlock>
+
+## List Comprehension
+
+Mit "List Comprehensions" bietet Python eine gute Möglichkeit Listen einfacher zu erstellen.
+
+Die einfachste Form einer List Comprehension ist folgende:
+`[funktion(x) for x in liste]`
+was man lesen kann wie
+"Nimm dir jedes Element aus der Liste, wende `funktion` drauf an, und dann pack es wieder zurück."
+
+Hier ein Beispiel:
+
+<CodeBlock frame="https://trinket.io/embed/python3/df6baad41e">
+
+```python
+studenten=["tim","theodor","justus","kevin"]
+
+# Setzt Ausrufezeichen hinter jedes Element
+def ausrufezeichen_setzen(string):
+    return string + "!"
+
+studenten_mit_ausrufezeichen = [ausrufezeichen_setzen(name) for name in studenten]
+print(studenten_mit_ausrufezeichen)
+```
+
+</CodeBlock>
+
+Diese List Erstellung kann auch mit einer Bedingung verbunden werden.
+
+<CodeBlock frame="https://trinket.io/embed/python3/1012f1ddf5">
+
+```python
+studenten=["tim","theodor","justus","kevin"]
+
+# Setzt Ausrufezeichen hinter jedes Element
+def ausrufezeichen_setzen(string):
+    return string + "!"
+
+studenten_mit_ausrufezeichen = [ausrufezeichen_setzen(name) for name in studenten]
+print(studenten_mit_ausrufezeichen)
+```
+
+</CodeBlock>
