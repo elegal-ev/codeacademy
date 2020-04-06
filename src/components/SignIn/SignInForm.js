@@ -66,33 +66,45 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const SignInForm = () => {
+const Picture = props => {
+  const classes = useStyles(props)
+  return (
+    <>
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+    </>
+  )
+}
 
-  const query = async () => {
-    const data = await useStaticQuery(graphql`
-      query LoginImageQuery {
-        allImageSharp(
-          filter: { id: { eq: "11111d8d-f44e-555c-a95b-2b2948cb0eca" } }
-        ) {
-          edges {
-            node {
-              id
-              fluid(jpegQuality: 10) {
-                src
-              }
-            }
+const SignInForm = () => {
+  let classes = useStyles()
+  const [img, setImg] = useState(null)
+
+  const data = useStaticQuery(graphql`
+    query LoginImageQuery {
+      allFile(filter: { id: { eq: "0db7c53a-6870-567d-bde0-ccdde3508dcf" } }) {
+        edges {
+          node {
+            publicURL
           }
         }
       }
-    `)
-    return data.allImageSharp.edges[0].node.fluid.src
-  }
+    }
+  `)
 
-  const classes = useStyles({ image: query().catch(console.error) });
+  useEffect(() => {
+    const imgUrl = data.allFile.edges[0].node.publicURL
+    console.log(imgUrl)
+    setImg(imgUrl)
+  }, [])
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      {img ? (
+        <Picture image={img} />
+      ) : (
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      )}
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
