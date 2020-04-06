@@ -93,7 +93,6 @@ const SignInForm = () => {
 
   useEffect(() => {
     const imgUrl = data.allFile.edges[0].node.publicURL
-    console.log(imgUrl)
     setImg(imgUrl)
   }, [])
 
