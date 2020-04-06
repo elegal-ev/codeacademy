@@ -15,6 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { graphql, useStaticQuery } from "gatsby";
 
+import kmpgLogin from "../../images/kpmg-97.jpg";
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: `url("/static/3880df6c91d54d9668e98b2b50d5c723/14b42/login_picture.jpg")`,
+        backgroundImage: `url("../../images/kpmg-97.jpg")`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
