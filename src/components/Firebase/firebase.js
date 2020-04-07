@@ -3,15 +3,25 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/functions';
 
+// const _config = {
+  // apiKey: `${process.env.GATSBY_API_KEY}`,
+  // authDomain: `${process.env.GATSBY_AUTH_DOMAIN}`,
+  // databaseURL: `${process.env.GATSBY_DATABASE_URL}`,
+  // projectId: `${process.env.GATSBY_PROJEC_TID}`,
+  // storageBucket: `${process.env.GATSBY_STORAGE_BUCKET}`,
+  // messagingSenderId: `${process.env.GATSBY_MESSAGING_SENDER_ID}`,
+  // appId: `${process.env.GATSBY_APP_ID}`,
+// }
+
 const config = {
-  apiKey: `${process.env.GATSBY_API_KEY}`,
-  authDomain: `${process.env.GATSBY_AUTH_DOMAIN}`,
-  databaseURL: `${process.env.GATSBY_DATABASE_URL}`,
-  projectId: `${process.env.GATSBY_PROJEC_TID}`,
-  storageBucket: `${process.env.GATSBY_STORAGE_BUCKET}`,
-  messagingSenderId: `${process.env.GATSBY_MESSAGING_SENDER_ID}`,
-  appId: `${process.env.GATSBY_APP_ID}`,
-}
+  apiKey: "AIzaSyCtKjefxDepTe_9ZtH10bF9eHnnyDenlGE",
+  authDomain: "codecamp-dev.firebaseapp.com",
+  databaseURL: "https://codecamp-dev.firebaseio.com",
+  projectId: "codecamp-dev",
+  storageBucket: "codecamp-dev.appspot.com",
+  messagingSenderId: "330692509264",
+  appId: "1:330692509264:web:e4eb2de2fe7d2940651b55"
+};
 
 
 class Firebase {
@@ -41,17 +51,10 @@ class Firebase {
   doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-  doSignInWithEmailAndPassword = (email, password) =>
-    this.auth.signInWithEmailAndPassword(email, password);
-
-  doSignInWithGoogle = () =>
-    this.auth.signInWithPopup(this.googleProvider);
-
-  doSignInWithFacebook = () =>
-    this.auth.signInWithPopup(this.facebookProvider);
-
-  doSignInWithTwitter = () =>
-    this.auth.signInWithPopup(this.twitterProvider);
+  doSignInWithEmailAndPassword = (email, password) =>{
+    console.log("Loggin in", email, 'with password', password)
+    this.auth.signInWithEmailAndPassword(email, password).then(() => console.log('login successful')).catch(err => console.error('Having an error', err));
+  }
 
   doSignOut = () => this.auth.signOut();
 

@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
+
+/** Material UI **/
 import Avatar from "@material-ui/core/Avatar"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -13,7 +15,12 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 
-import { graphql, useStaticQuery } from "gatsby"
+/** Gatsby **/
+import { navigate, graphql, useStaticQuery } from "gatsby"
+
+/** Firebase **/
+import { withFirebase } from "../Firebase"
+import FirebaseContext from '../Firebase'
 
 function Copyright() {
   return (
@@ -26,11 +33,6 @@ function Copyright() {
       {"."}
     </Typography>
   )
-}
-
-const onSubmit = event => {
-  event.preventDefault()
-  console.log("submitted")
 }
 
 const useStyles = makeStyles(theme => ({
@@ -75,10 +77,17 @@ const Picture = props => {
   )
 }
 
-const SignInForm = () => {
+const SignInForm = props => {
   let classes = useStyles()
   const [img, setImg] = useState(null)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState(null)
+  const [_initFirebase, setInitFirebase] = useState(false)
 
+  const firebase = useContext(FirebaseContext)
+
+  // Getting the proper image from gatsby
   const data = useStaticQuery(graphql`
     query LoginImageQuery {
       allFile(filter: { id: { eq: "0db7c53a-6870-567d-bde0-ccdde3508dcf" } }) {
@@ -91,9 +100,41 @@ const SignInForm = () => {
     }
   `)
 
+  // intialize firebase
+  const firebaseInit = () => {
+    if (firebase && !_initFirebase) {
+      setInitFirebase(true)
+      initialRequest()
+    }
+  }
+
+  // FIXME redundant?
+  const initialRequest = () => {}
+
+  const onSubmit = event => {
+    firebase
+      .doSignInWithEmailAndPassword(email, password)
+      .then(() => {
+        setEmail("")
+        setPassword("")
+        navigate("/lessons/intro")
+      })
+      .catch(error => setError(error))
+    event.preventDefault()
+  }
+
+  // handlers
+  const handleEmailField = event => setEmail(event.target.value)
+  const handlePasswordField = event => setPassword(event.target.value)
+
+  // initial hook
   useEffect(() => {
+    // setting image url
     const imgUrl = data.allFile.edges[0].node.publicURL
     setImg(imgUrl)
+
+    // init firebase
+    firebaseInit()
   }, [])
 
   return (
@@ -112,7 +153,6 @@ const SignInForm = () => {
           <Typography component="h1" variant="h5">
             Anmeldung
           </Typography>
-          <form className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -123,6 +163,7 @@ const SignInForm = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleEmailField}
             />
             <TextField
               variant="outlined"
@@ -134,6 +175,7 @@ const SignInForm = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handlePasswordField}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -145,7 +187,7 @@ const SignInForm = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onSubmit={onSubmit}
+              onClick={onSubmit}
             >
               Anmelden
             </Button>
@@ -160,7 +202,8 @@ const SignInForm = () => {
             <Box mt={5}>
               <Copyright />
             </Box>
-          </form>
+          {error && console.log(error)}
+          {error && <p>{error.message}</p>}
         </div>
       </Grid>
     </Grid>
