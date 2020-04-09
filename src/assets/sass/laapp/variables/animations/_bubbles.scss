@@ -1,0 +1,21 @@
+$bubbles-vertical-min-height: 640px;
+$bubbles-animation-map: (
+  ( bottom: 45, top: 0, left: 22, animation-duration: 15.8 ),
+  ( bottom: 40, top: 10, left: 32, animation-duration: 21.7 ),
+  ( bottom: 56, top: 8, left: 44, animation-duration: 28.8 ),
+  ( bottom: 51, top: 6, left: 71, animation-duration: 19.8 ),
+  ( bottom: 65, top: 50, left: 50, animation-duration: 19.5 ),
+  ( bottom: 44, top: 70, left: 5, animation-duration: 22.7 ),
+  ( bottom: 80, top: 90, left: 70, animation-duration: 27.5 ),
+  ( bottom: 55, top: 81, left: 38, animation-duration: 23 ),
+
+  ( bottom: 50, top: 51, left: 80, animation-duration: 19.4 ),
+  ( bottom: 55, top: 45, left: 32, animation-duration: 18.2 ),
+  ( bottom: 60, top: 95, left: 4, animation-duration: 16.4 ),
+  ( bottom: 60, top: 92, left: 48, animation-duration: 17.8 ),
+  ( bottom: 70, top: 78, left: 50, animation-duration: 19.2 ),
+  ( bottom: 75, top: 6, left: 7, animation-duration: 12.2 ),
+  ( bottom: 50, top: 78, left: 90, animation-duration: 19.8 ),
+  ( bottom: 68, top: 45, left: 64, animation-duration: 20.6 )
+);
+$bubbles-animation-count: length($bubbles-animation-map);

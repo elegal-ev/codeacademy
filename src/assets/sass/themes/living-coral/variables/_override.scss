@@ -1,0 +1,111 @@
+// Import the theme palette to enable the colors when overriding
+@import "palette";
+
+// Bootstrap variables
+//
+// Override Bootstrap variables here to suite your theme.
+// Copy variables you want to customize from node_modules/bootstrap/scss/_variables.scss
+
+//
+// Color system
+//
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue-dark: #1a85d9; // ending scale #023a68;
+$blue: #2095f2;
+$blue-light: #449ff4; // ending scale #9dd3ff;
+
+$steel: #5f7c8a;
+
+$red-dark: #de392e; // ending scale #740c05;
+$red: #f44236;
+$red-light: #f75446; // ending scale #fd9d96;
+
+$yellow-dark: #ec8c01; // ending scale #8f5703;
+$yellow: #ff9700;
+$yellow-light: #ffa73c; // ending scale #fdebcf;
+
+$green-dark: #2eaa66; // ending scale #035327
+$green: #37bd74;
+$green-light: #50c783; // ending scale #b4f8d2
+
+$cyan-dark: #0fbad8; // ending scale #055c6b
+$cyan: #11cdef;
+$cyan-light: #42d2f1; // ending scale #a8f0fd
+
+$theme-colors: (
+  primary: $living-coral, //$blue,
+  secondary: $radiant-yellow, //$steel,
+  alternate: $ibiza-blue,
+  contrast: $white,
+
+  success: $green,
+  info: $cyan,
+  warning: $amberglow, //$yellow,
+  danger: $red,
+  dark: $beluga-dark-5x,
+  light: $beluga-light-5x
+);
+
+// Body
+//
+// Settings for the `<body>` element.
+$body-color: $beluga-dark-4x;
+
+// Links
+//
+// Style anchor elements.
+$link-color: $ibiza-blue;
+$link-hover-decoration: none;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+$border-color: $beluga-light-5x;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+//$enable-shadows: true;
+//$enable-gradients: true;
+$enable-responsive-font-sizes: true;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+$font-family-base: 'Lato', sans-serif;
+
+$font-weight-lighter: 100;
+$font-weight-semibold: 600 !default;
+$font-weight-bolder: 900;
+
+$headings-font-family: $font-family-base;
+$headings-font-weight: $font-weight-semibold;
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+$input-btn-focus-box-shadow: none;
+
+// Forms
+$btn-font-size: .75rem;
+$btn-padding-y: .5rem;
+$btn-padding-x: .1rem;
+
+$input-color: $beluga-light;
+$input-border-color: $beluga-light-4x;
+
+$input-focus-bg: $beluga-light-5x;
+$input-focus-border-color: $beluga-light-3x;
+$input-focus-color: $beluga;
+// $input-focus-box-shadow: $input-btn-focus-box-shadow;

@@ -1,0 +1,32 @@
+$alter2-shapes-map: (
+  default: (
+    ( top: 0, left: 0, height: 40, width: 600, attrs: ( "background-image":  linear-gradient(45deg, $auxiliary 0, theme-color("primary") 35%, theme-color("secondary") 110%) ) ),
+    ( top: 20, left: 12, height: 10, width: 200, attrs: ( "background-image":  linear-gradient(90deg, theme-color("primary") 0, theme-color("secondary") 100%) ) ),
+
+    ( top: 80, left: 45, height: 5, width: 200, attrs: ( "background-image":  linear-gradient(90deg, $light-shape-color-2 0, $light-shape-color 100%)) ),
+    ( top: 82, left: 45, height: 15, width: 150, attrs: ( "background-image":  linear-gradient(90deg, $light-shape-color-2 0, $light-shape-color 100%)) ),
+
+    ( top: 20, left: 0, height: 20, width: 200, attrs: ( opacity: 0.5, "background-image":  linear-gradient(90deg, $light-shape-color 0, $light-shape-color-2 100%)) ),
+    ( top: 34, left: 5, height: 6, width: 60, attrs: ( opacity: 0.5, "background-image":  linear-gradient(90deg, theme-color("primary") 0, theme-color("secondary") 100%)) ),
+    ( top: 17, left: 3, height: 6, width: 100, attrs: ( opacity: 0.5, "background-image":  linear-gradient(90deg, $light-shape-color-2 0, $light-shape-color-2 100%)) ),
+
+    ( top: 70, left: -5, height: 5, width: 300, attrs: ( opacity: 0.5, "background-image":  linear-gradient(90deg, theme-color("primary") 0, theme-color("secondary") 100%) ) ),
+    ( top: 72, left: -5, height: 15, width: 200, attrs: ( opacity: 0.5, "background-color":  theme-color("secondary") )),
+
+    ( top: 0, left: 85, height: 25, width: 300, attrs: ( "background-color": rgba($white, 0.1) ) ),
+    ( top: 3, left: 91, height: 10, width: 150, attrs: ( "background-color": rgba($white, 0.1) ) )
+  ),
+  md : (
+    ( top: 25 ),
+    ( top: 20 )
+  ),
+  lg: (
+    ( left: 12 ),
+    ( top: 10, width: 300 )
+  ),
+  xl: (
+    ( left: 31 ),
+    ( left: 31 )
+  )
+);
+$alter2-shapes-count: length($alter2-shapes-map);

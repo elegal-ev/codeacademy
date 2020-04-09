@@ -1,0 +1,15 @@
+.start-free {
+  .icon {
+    position: absolute;
+    color: $start-free-icons-color;
+
+    @for $i from 1 through $start-free-icons-count {
+      $style: nth($start-free-icons-map, $i);
+
+      &:nth-of-type(#{$i}) {
+        top: map-get($style, top) / 100 * 100%;
+        left: map-get($style, left) / 100 * 100%;
+      }
+    }
+  }
+}

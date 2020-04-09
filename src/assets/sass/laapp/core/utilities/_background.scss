@@ -1,0 +1,64 @@
+/* 2.1 Background ======================================================= */
+.image-background {
+    position: relative;
+    background-attachment: scroll;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    &.cover {
+        background-size: cover;
+    }
+
+    &.contain {
+        background-size: contain;
+    }
+
+    &.left-bottom {
+        background-position: 0 bottom;
+    }
+
+    &.center-top {
+        background-position: center top;
+    }
+
+    &.center-bottom {
+        background-position: center bottom;
+    }
+
+    &.p100-top {
+        background-position: 100% top;
+    }
+
+    &.p100-bottom {
+        background-position: 100% bottom;
+    }
+}
+
+.parallax {
+    position: static;
+
+    &,
+    &.blurred:before {
+        background-attachment: fixed;
+    }
+
+    &.blurred:before {
+        position: absolute;
+    }
+}
+
+@each $i, $color in $theme-colors {
+    $from-color: lighten($color, 0.75);
+
+    .bg-#{$i} {
+        &.edge {
+            &.bottom-right {
+                @include angled-edge('outside bottom', 'lower right', $color, 310);
+            }
+
+            &.top-left {
+                @include angled-edge('outside top', 'upper left', $color, 310);
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+$form-control--color: $body-color;
+$form-control--border-color: $input-border-color;
+$form-control--border-color-hover: $ibiza-blue-light-3x; //$living-coral-light-5x;
+$form-control--box-shadow: none;
+$form-control--box-shadow-focus: 0 3px 9px rgba($ibiza-blue, 0), 3px 4px 8px rgba($ibiza-blue-light-3x, 0.1);
+$form-control--readonly-color: $beluga-light-3x;
+$form-control--disabled-color: $beluga-light-3x;
+
+$input-padding-base: $input-padding-y;
+$input-text-color: darken($input-border-color, 12%);
+$input-text-color-focus: darken($input-text-color, 22%);
+$input-border: #d8e1e5;
+$input-bg-color-disabled: $beluga-light-5x;

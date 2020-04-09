@@ -1,0 +1,21 @@
+@include keyframes (blink) {
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@include keyframes(jump) {
+  0% { top: 0; }
+  50% { top: 50px; }
+  100% { top: 0; }
+}
+
+.animation {
+  //position: relative;
+  transform-style: preserve-3d;
+}
+
+.typed-cursor {
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}

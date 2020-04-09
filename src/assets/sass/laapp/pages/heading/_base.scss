@@ -1,0 +1,24 @@
+.navigation {
+    &.fixed-top {
+        + main .header {
+            padding-top: $navbar-min-height;
+        }
+    }
+}
+
+.header {
+    position: relative;
+
+    .container {
+        position: relative;
+        margin: 0 auto;
+    }
+}
+
+@include media-breakpoint-up($grid-float-breakpoint) {
+    .mobile-device {
+        &[class*='absolute'] {
+            margin-top: -$section-container-padding-x / 2 !important;
+        }
+    }
+}

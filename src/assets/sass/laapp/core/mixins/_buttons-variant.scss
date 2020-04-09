@@ -1,0 +1,32 @@
+@mixin btn {
+  transition: all 0.3s ease;
+  text-decoration: none;
+  letter-spacing: 1.45px;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  // text-transform: $btn-text-transform;
+  @include button-size(0.5rem, 1.25rem, $btn-font-size, $btn-line-height, $btn-border-radius);
+  white-space: normal;
+  text-align: left;
+}
+
+@mixin hover-shadow($shadow, $space: 5px, $blur: 10px, $opacity: .4) {
+  @include hover {
+    box-shadow: 0 $space $blur rgba($shadow, $opacity) !important;
+  }
+}
+
+@mixin button-hover($background, $border) {
+  @include button-variant($background, $border);
+  @include hover-shadow($background);
+}
+
+@mixin button-outline-hover($color) {
+  @include button-outline-variant($color);
+  @include hover-shadow($color);
+}
+
+@mixin circle-button-variant($size) {
+  width: $size;
+  height: $size;
+}

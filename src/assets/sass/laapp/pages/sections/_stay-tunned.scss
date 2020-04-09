@@ -1,0 +1,7 @@
+.stay-tunned {
+  .form-wrapper {
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      width: 50%;
+    }
+  }
+}

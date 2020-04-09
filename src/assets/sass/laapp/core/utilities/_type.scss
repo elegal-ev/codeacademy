@@ -1,0 +1,25 @@
+/* 2.11 Type ======================================================= */
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    letter-spacing: $headings-letter-spacing;
+}
+
+.font-regular { font-size: $font-size-regular !important; }
+.font-xs { font-size: $font-size-tiny !important; }
+.font-sm { font-size: $font-size-small !important; }
+.font-md { font-size: $font-size-m !important; }
+.font-lg { font-size: $font-size-lg !important; }
+.font-xl { font-size: $font-size-xl !important; }
+.font-xxl { font-size: $font-size-2xl !important; }
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .display#{$infix}-1   { font-size: $display1-size !important; }
+        .display#{$infix}-2   { font-size: $display2-size !important; }
+        .display#{$infix}-3   { font-size: $display3-size !important; }
+        .display#{$infix}-4   { font-size: $display4-size !important; }
+    }
+}

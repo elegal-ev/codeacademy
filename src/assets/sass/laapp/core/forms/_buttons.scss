@@ -1,0 +1,93 @@
+/* 4.2 Buttons ======================================================= */
+
+button {
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn {
+    @include btn();
+
+    .icon {
+        margin-right: 8px;
+    }
+}
+
+.btn-link {
+    box-shadow: none;
+    cursor: pointer;
+}
+
+@each $size, $value in $btn-sizes {
+    .btn-#{$size} {
+        @include button-size($value, $value * 2, $value * 2, $btn-line-height, $btn-border-radius);
+    }
+}
+
+.btn-rounded {
+    border-radius: $btn-border-rounded;
+}
+
+.btn-circle {
+    @include circle-button-variant(3rem);
+
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+
+    @each $size, $value in $btn-sizes {
+        &.btn-#{$size} { @include circle-button-variant($value * 8); font-size: ($value * 3) - .125rem; }
+    }
+}
+
+.btn-download {
+    min-width: 200px;
+    text-align: left;
+    display: flex !important;
+    align-items: center;
+
+    p {
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 1.45;
+    }
+
+    .small {
+        margin-top: -2px;
+        display: block;
+    }
+}
+
+.input-group {
+    .btn {
+        &:not(:first-child) {
+            margin-left: -1px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn-#{$color} {
+        @include hover-shadow($value);
+    }
+}
+
+//@each $i, $color in $theme-colors {
+//    .btn-outline-#{$i} {
+//        @include button-outline-hover($color);
+//    }
+//}
+
+.btn-accent {
+    @include button-hover($color-accent, $color-accent);
+}
+
+.btn-outline-accent {
+    @include button-outline-hover($color-accent);
+}

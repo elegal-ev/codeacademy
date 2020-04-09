@@ -1,21 +1,10 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import Layout from '../utils/layout';
+// import Landing from '../components/scenes/Landing/Landing';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Alt2 from '../views/landing/Alternative2'
+import '../laapp.js'
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
-
-export default IndexPage
+export default props => (
+  <Alt2 {...props} />
+);

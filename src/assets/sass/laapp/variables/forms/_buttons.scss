@@ -1,0 +1,11 @@
+$btn-text-transform: uppercase;
+$btn-sizes: () !default;
+$btn-sizes: map-merge((
+        "xs": .125rem, // 0.75
+        "sm": .25rem,  // 1.5
+        "md": .375rem, // 1
+        "lg": .5rem,   // 3
+        "xl": .625rem  // 3.75
+), $btn-sizes);
+
+$btn-border-rounded: $input-border-rounded;

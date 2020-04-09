@@ -1,0 +1,17 @@
+.more-link {
+  //display: flex;
+  //align-items: center;
+  margin-top: 2rem;
+
+  .icon {
+    margin-left: 8px;
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  &:hover {
+    .icon {
+      transform: translateX(5px);
+    }
+  }
+}

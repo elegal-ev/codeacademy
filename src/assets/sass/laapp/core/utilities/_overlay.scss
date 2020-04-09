@@ -1,0 +1,55 @@
+/* 2.6 Overlay ======================================================= */
+
+$color-overlay: #27333E;
+$rgba: 0.6;
+
+.overlay {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background-color: rgba($color-overlay, $rgba);
+        opacity: 1;
+        z-index: 0;
+    }
+
+    [class^='container'],
+    > .content {
+        position: relative;
+        z-index: 1;
+    }
+
+    > .content {
+        position: relative;
+    }
+
+    @each $c, $color in $theme-colors {
+        &.overlay-#{$c} {
+            &:after {
+                background-color: rgba($color, $rgba);
+            }
+
+            @for $a from 1 through 9 {
+                $transparency: $a * .1;
+
+                &.alpha-#{$a} {
+                    &:after {
+                        background-color: rgba($color, $transparency);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.inner-overlay {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+}

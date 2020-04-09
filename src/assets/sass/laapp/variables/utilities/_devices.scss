@@ -1,0 +1,18 @@
+// [ MOBILE DEVICES ]
+$jacks-bg-color: #e3e8eb !default;
+$browser-action-color-1: #f44 !default;
+$browser-action-color-2: #9b3 !default;
+$browser-action-color-3: #fb5 !default;
+$browser-action-size: 0.5em !default;
+$iphone-bg-color: $white !default;
+
+// design for iphone-x
+$x-scaling: .65;
+$x-border-width: 15px * $x-scaling;
+$x-phone-width: 375px * $x-scaling;
+$x-border-radius: 40px * $x-scaling;
+$x-notch-width: 209px * $x-scaling;
+$x-notch-height: 35px * $x-scaling;
+$x-notch-border-radius: 20px * $x-scaling;
+$x-dark-bg: $beluga-dark-5x;
+$x-light-bg: $white;

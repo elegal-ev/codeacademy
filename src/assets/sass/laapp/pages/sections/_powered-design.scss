@@ -1,0 +1,63 @@
+.powered-design {
+  .shapes-container {
+    overflow: unset;
+  }
+
+  .shape {
+    position: absolute;
+
+    &-circle {
+      bottom: 0;
+      right: 0;
+
+      &-1 {
+        transform: translate3d(25%, 10%, 0);
+
+        div {
+          @include circle-variant(750px, $use-cases--circle1-bg-color);
+        }
+      }
+
+      &-2 {
+        transform: translate3d(25%, 10%, 0);
+
+        div {
+          @include circle-variant(500px, $use-cases--circle2-bg-color);
+        }
+      }
+    }
+
+    &-triangle {
+      top: 80%;
+      left: 0;
+
+      div {
+        opacity: .15;
+        @include triangle-variant(95px, $use-cases--triangle-bg-color, $use-cases--triangle-bg-color2);
+        animation-duration: 50s;
+      }
+    }
+
+    &-ring {
+      left: 50%;
+      top: 0;
+
+      div {
+        @include ring-variant(10px, 5px, $use-cases--ring-bg-color);
+      }
+    }
+
+    &.pattern {
+      &-dots {
+        &-1 {
+          bottom: 0;
+          right: 0;
+          width: 150px;
+          height: 50%;
+          transform: translate3d(0, 50%, 0);
+          @include pattern-dots(3px, 30px, $use-cases--dots-color);
+        }
+      }
+    }
+  }
+}

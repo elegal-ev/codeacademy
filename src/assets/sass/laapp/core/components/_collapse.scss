@@ -1,0 +1,16 @@
+[data-toggle="collapse"] {
+  display: flex;
+  align-items: center;
+
+  &:after {
+    @include font-awesome($fa-var-angle-down);
+    transition: transform .3s ease;
+    margin-left: auto;
+  }
+
+  &.collapsed {
+    &:after {
+      transform: rotate(-90deg);
+    }
+  }
+}

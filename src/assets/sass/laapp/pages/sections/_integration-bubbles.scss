@@ -1,0 +1,24 @@
+.integration-bubbles {
+  .bubbles-wrapper {
+    position: relative;
+    height: 100%;
+  }
+
+  .bubble {
+    bottom: 30% !important;
+    transform: translateY(-100%);
+    @include center-flex(center);
+
+    @for $i from 1 through $bubbles-animation-count {
+      $style: nth($bubbles-animation-map, $i);
+
+      &:nth-child(#{$i}) {
+
+      }
+    }
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      bottom: 0 !important;
+    }
+  }
+}

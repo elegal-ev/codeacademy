@@ -1,0 +1,13 @@
+.navbar-nav {
+  position: relative;
+}
+
+.navbar {
+  @include media-breakpoint-up($grid-float-breakpoint) {
+    .dropdown {
+      &.mega {
+        position: static;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+//animation: bubble-v-left 10s linear infinite
+.bubbles-wrapper {
+  position: absolute;
+  width: 100%;
+  min-height: 200px;
+  bottom: 0;
+
+  .bubble {
+    position: absolute;
+
+    // number of bubbles: 16
+    @for $i from 1 through $bubbles-animation-count {
+      $style: nth($bubbles-animation-map, $i);
+
+      &:nth-child(#{$i}) {
+        animation: floating #{map-get($style, animation-duration)/3}s ease-in-out infinite alternate;
+        bottom: map-get($style, bottom) / 100 * 100%;
+        left: map-get($style, left) / 100 * 100%;
+
+        @include media-breakpoint-up(lg) {
+          animation: bubble-v #{map-get($style, animation-duration)}s linear infinite, shake-v 2s ease-in-out infinite alternate;
+        }
+      }
+
+      &.top-initial {
+        &:nth-child(#{$i}) {
+          top: map-get($style, top) / 100 * 100%;
+        }
+      }
+    }
+
+    .badge {
+      opacity: 0;
+      transform: translateX(-100%);
+      transition: all .3s linear;
+      @include center(x);
+      bottom: 0;
+
+    }
+
+    &:hover {
+      .badge {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}

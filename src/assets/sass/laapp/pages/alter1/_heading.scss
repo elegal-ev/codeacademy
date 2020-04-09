@@ -1,0 +1,57 @@
+.alter1-header {
+  .container {
+    padding-bottom: 10rem;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    width: 300%;
+    height: 200%;
+    border-radius: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background-image: linear-gradient(
+      45deg,
+      $auxiliary 0,
+      theme-color("primary") 50%,
+      theme-color("secondary") 110%
+    );
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      width: 200%;
+    }
+  }
+
+  .shape {
+    position: absolute;
+
+    @for $i from 1 through $alter1-shapes-count {
+      $style: nth($alter1-shapes-map, $i);
+
+      &:nth-child(#{$i}) {
+        top: map-get($style, top) / 100 * 100%;
+        left: map-get($style, left) / 100 * 100%;
+        width: map-get($style, width) * 1px;
+        height: map-get($style, height) * 1px;
+      }
+    }
+
+    &.shape-diagonal {
+      &:before {
+        content: "";
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba($white, 0.1);
+        transform: rotate(-35deg);
+        position: absolute;
+        border-radius: 50px;
+      }
+    }
+  }
+}

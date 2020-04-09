@@ -1,0 +1,64 @@
+.alter3-features {
+  .shapes-container {
+    overflow: unset;
+  }
+
+  .rotated-cards {
+    @include media-breakpoint-up(lg) {
+      transform: rotate(-5deg);
+    }
+  }
+
+  .shape {
+    position: absolute;
+
+    &-ring {
+      right: 0;
+      top: 0;
+      transform: translate3d(50%, -50%, 0);
+
+      &-1 {
+        .animation {
+          @include ring-variant(340px, $alter3-features--ring-1-width, $alter3-features--ring-1-color);
+          animation-duration: 45s;
+        }
+      }
+
+      &-2 {
+        .animation {
+          @include ring-variant(280px, $alter3-features--ring-2-width, $alter3-features--ring-2-color);
+          animation-duration: 60s;
+        }
+      }
+
+      .animation {
+        border-style: dashed;
+      }
+    }
+
+    &-circle {
+      top: 50px;
+      right: 120px;
+
+      div {
+        @include circle-variant(15px, $alter3-features--circle-color);
+      }
+    }
+  }
+
+  .background-shape-main {
+    z-index: 0;
+
+    left: 0;
+    top: 10%;
+    width: 500px;
+    height: 720px;
+    transform: translate3d(-25%, 20%, 0) rotate(-30deg);
+    background-image: linear-gradient(35deg, $white 0, $beluga-light-5x 100%);
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      width: 1200px;
+      top: 0;
+    }
+  }
+}

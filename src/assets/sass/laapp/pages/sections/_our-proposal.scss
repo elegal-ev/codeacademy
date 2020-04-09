@@ -1,0 +1,39 @@
+.our-proposal {
+  .shape, .pattern {
+    position: absolute;
+  }
+
+  .pattern {
+    &-dots {
+      left: 5%;
+      top: 25%;
+      width: 220px;
+      height: 220px;
+
+      @include pattern-dots(3px, 15px, $proposal-circle-pattern-color);
+
+      @include media-breakpoint-up($grid-float-breakpoint) {
+        left: 15%;
+        top: 5%;
+      }
+    }
+  }
+
+  .shape {
+    &-circle {
+      @include circle-variant(120px, $proposal-circle-bg-color);
+
+      &.pattern-dots {
+        left: 60%;
+        top: 0;
+
+        @include pattern-dots(2px, 10px, $proposal-circle-pattern-color);
+      }
+
+      &-fill {
+        left: 58%;
+        top: 8%;
+      }
+    }
+  }
+}

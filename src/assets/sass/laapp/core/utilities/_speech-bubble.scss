@@ -1,0 +1,116 @@
+%before-and-after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: $speech-bubble-arrow-size solid transparent;
+}
+
+.speech-bubble {
+  position: relative;
+  background: $white;
+  border-radius: $speech-bubble-border-radius;
+  padding: $speech-bubble-inner-padding;
+
+  &:after {
+    @extend %before-and-after;
+  }
+
+  &.arrow-bottom {
+    &:after {
+      border-bottom: 0;
+      border-top-color: $white;
+      margin-bottom: -$speech-bubble-arrow-size;
+      bottom: 0;
+    }
+
+    &--center {
+      &:after {
+        left: 50%;
+        margin-left: -$speech-bubble-arrow-size / 2;
+      }
+    }
+
+    &--left {
+      &:after {
+        border-left: 0;
+        left: 25%;
+      }
+    }
+
+    &--right {
+      &:after {
+        border-right: 0;
+        left: 75%;
+      }
+    }
+  }
+
+  @each $i, $color in $theme-colors {
+    &.bg-#{$i} {
+      &:after {
+        border-top-color: $color;
+      }
+    }
+  }
+
+  &-outlined {
+    border: $speech-bubble-outline-border-width solid $white;
+    background: $white;
+
+    // :before hides the arrow background making it outlined
+    &:before {
+      @extend %before-and-after;
+      border-width: $speech-bubble-arrow-size - $speech-bubble-outline-border-width - 1;
+    }
+
+    &.arrow-bottom {
+      &:before {
+        bottom: 0;
+        border-bottom: 0;
+        border-top-color: $white;
+        margin-bottom: -$speech-bubble-arrow-size + $speech-bubble-outline-border-width + 1;
+        z-index: 1;
+      }
+
+      &--center {
+        &:before {
+          left: 50%;
+          margin-left: (-$speech-bubble-arrow-size / 2) + $speech-bubble-outline-border-width + 1;
+        }
+      }
+
+      &--left {
+        &:before {
+          left: 25%;
+          border-left: 0;
+          margin-left: $speech-bubble-outline-border-width;
+        }
+      }
+
+      &--right {
+        &:before {
+          left: 75%;
+          border-right: 0;
+          margin-left: $speech-bubble-outline-border-width;
+        }
+      }
+
+      @each $i, $color in $theme-colors {
+        &.border-#{$i} {
+          &:before {
+            border-top-color: $color;
+          }
+
+          &:after {
+            border-top-color: $color;
+          }
+        }
+      }
+    }
+  }
+
+  > .rounded {
+    border-radius: $speech-bubble-border-radius !important;
+  }
+}

@@ -1,0 +1,37 @@
+.faqs-dd {
+  .card {
+    border: 0;
+  }
+
+  .card-header {
+    border-radius: $faq-header-border-radius;
+    background-color: $faq-header-bg-color;
+    border-bottom: 0;
+  }
+
+  .card-title {
+    margin-bottom: 0;
+    color: $faq-title-color;
+    transition: color .3s ease-in;
+
+    &.collapsed {
+      color: $faq-title-collapsed-color;
+    }
+  }
+
+  .card-body {
+    padding-left: 2rem;
+  }
+
+  .icon {
+    left: 0;
+    top: 30%;
+    font-size: 26rem;
+    color: $faqs--icon-color;
+    line-height: 1;
+
+    i {
+      transform: translate3d(-25%, 0, 0);
+    }
+  }
+}

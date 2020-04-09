@@ -1,0 +1,91 @@
+// Start styling Laapp.
+@import "themes/living-coral/variables/override";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Import theme variables here,
+@import "themes/living-coral/variables";
+@import "laapp/__variables";
+@import "laapp/core/mixins";
+
+$selector-bg: #edf1f2;
+$selector-header-bg: #442d65;
+$selector-font-color: #a0a0a0;
+$selector-font-color-hover: darken($selector-font-color, 70%);
+$selector-title-color: #f98a5f;
+$selector-border-color: darken($selector-bg, 8%);
+$selector-width: 350px;
+
+.demo-link {
+  width: 64px;
+  max-width: 64px;
+  transition: max-width 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+
+  .demo-link-text {
+    opacity: 0;
+    font-weight: $font-weight-normal;
+    font-size: $font-size-small;
+    transform: translateX(100%);
+    transition: transform 0.3s ease 0.2s;
+  }
+
+  &:hover {
+    max-width: 192px;
+    width: auto;
+
+    .demo-link-text {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.preview-pane {
+  padding: 0;
+  text-align: center;
+
+  .preview-page {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+
+    img {
+      width: 100%;
+      display: block;
+      margin-top: 0;
+    }
+  }
+
+  //@include media-breakpoint-up($grid-float-breakpoint) {
+  // height: 320px;
+  //}
+}
+
+.card-demo {
+  .card-body {
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.03);
+  }
+}
+
+.demo-header {
+  position: relative;
+  overflow: hidden;
+
+  /* @include media-breakpoint-up($grid-float-breakpoint) {
+    overflow: auto;
+  } */
+
+  .bubbles-wrapper {
+    right: 0;
+    width: 50%;
+
+    .bubble {
+      bottom: 0 !important;
+      @include center-flex(center);
+    }
+  }
+}

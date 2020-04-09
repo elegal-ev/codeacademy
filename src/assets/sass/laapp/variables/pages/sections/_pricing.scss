@@ -1,0 +1,23 @@
+$pricing-plans-shape--box-shadow: rgba($beluga-dark-5x, 0.03);
+$pricing-plans-shape--shadow-size: 85px;
+$pricing-plans-shape--width: 130px;
+$pricing-plans-shape--border-radius: $pricing-plans-shape--width / 2;
+$pricing-plans-shape--height: 800px;
+$pricing-plans-icons-map: (
+  ( top: 15, left: 15 ),
+  ( top: 25, left: 25 ),
+  ( top: 80, left: 4 ),
+  ( top: 85, left: 15 ),
+  ( top: 15, left: 85 ),
+  ( top: 25, left: 75 )
+);
+$pricing-plans-icons-count: length($pricing-plans-icons-map);
+$pricing-plans-icon--color: $beluga-light-5x;
+
+$price-plan-margin-bottom: 1rem;
+$price-plan-border-color: $border-color;
+$price-plan-bg-color: $white;
+$price-value-font-size: $font-size-xl;
+$price-plan-border-radius: $border-radius;
+$price-plan-box-shadow-size: 45px;
+$price-plan-box-shadow-color: rgba($beluga-dark-5x, 0.07);

@@ -1,0 +1,41 @@
+$gradients-map: (
+  primary: (
+    light: $living-coral-light,
+    dark: $living-coral-dark,
+    secondary: theme-color("secondary"),
+    alternate: theme-color("alternate")
+  ),
+  secondary: (
+      light: $ibiza-blue-light,
+      dark: $ibiza-blue-dark
+  ),
+  alternate: (
+      light: $ibiza-blue-light,
+      dark: $ibiza-blue-dark
+  ),
+
+  success: (
+    light: $green-light,
+    dark: $green-dark
+  ),
+  info: (
+    light: $cyan-light,
+    dark: $cyan-dark
+  ),
+  warning: (
+    light: $yellow-light,
+    dark: $yellow-dark
+  ),
+  danger: (
+    light: $red-light,
+    dark: $red-dark
+  ),
+  dark: (
+      light: $beluga-light,
+      dark: $beluga-dark
+  ),
+  light: (
+    light: $beluga-light,
+    dark: $beluga-dark
+  )
+);

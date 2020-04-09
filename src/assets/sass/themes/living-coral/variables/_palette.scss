@@ -1,0 +1,145 @@
+/* PANTONE 16-1546 Living Coral
+ * Theme inspired by the following entry
+ * https://design.tutsplus.com/articles/pantone-color-of-the-year-2019--cms-32338
+ *
+ * Taking the palette from the exploration tab according to Pantone site
+ * https://www.pantone.com/color-intelligence/color-of-the-year/color-of-the-year-2019-palette-exploration
+ *
+ * Feel free to modify the palette according to your needs
+ */
+
+$auxiliary: #20769e;
+
+// $living-coral-dark-5x: #803730;
+// $living-coral-dark-4x: #984139;
+// $living-coral-dark-3x: #b14d43;
+// $living-coral-dark-2x: #cb584d;
+// $living-coral-dark: #e56357;
+// $living-coral: #3f43ad;
+// $living-coral-light: #ff8c7c;
+// $living-coral-light-2x: #050505;
+// $living-coral-light-3x: #ffbdb1;
+// $living-coral-light-4x: #ffd3cb;
+// $living-coral-light-5x: #ffeae5;
+
+$living-coral-dark-5x: #084166;
+$living-coral-dark-4x: #084c76;
+$living-coral-dark-3x: #075885;
+$living-coral-dark-2x: #066395;
+$living-coral-dark: #01729a;
+$living-coral: #007cb7;
+$living-coral-light: #009cf7;
+$living-coral-light-2x: #5f9ed2;
+$living-coral-light-3x: #7bb0df;
+$living-coral-light-4x: #95c2ec;
+$living-coral-light-5x: #afd4fa;
+
+$ibiza-blue-dark-5x: #084166;
+$ibiza-blue-dark-4x: #084c76;
+$ibiza-blue-dark-3x: #075885;
+$ibiza-blue-dark-2x: #066395;
+$ibiza-blue-dark: #01729a;
+$ibiza-blue: #007cb7;
+$ibiza-blue-light: #009cf7;
+$ibiza-blue-light-2x: #5f9ed2;
+$ibiza-blue-light-3x: #7bb0df;
+$ibiza-blue-light-4x: #95c2ec;
+$ibiza-blue-light-5x: #afd4fa;
+
+// $amberglow-dark-5x: #b83604;
+// $amberglow-dark-4x: #bf4512;
+// $amberglow-dark-3x: #c7531d;
+// $amberglow-dark-2x: #ce5f28;
+// $amberglow-dark: #d56d33;
+// $amberglow: #dc793e;
+// $amberglow-light: #e68f5e;
+// $amberglow-light-2x: #efa57b;
+// $amberglow-light-3x: #f6bc9c;
+// $amberglow-light-4x: #fbd2bc;
+// $amberglow-light-5x: #fee9de;
+
+$amberglow-dark-5x: #084166;
+$amberglow-dark-4x: #084c76;
+$amberglow-dark-3x: #075885;
+$amberglow-dark-2x: #066395;
+$amberglow-dark: #01729a;
+$amberglow: #007cb7;
+$amberglow-light: #009cf7;
+$amberglow-light-2x: #5f9ed2;
+$amberglow-light-3x: #7bb0df;
+$amberglow-light-4x: #95c2ec;
+$amberglow-light-5x: #afd4fa;
+
+$amberglow-yellow-dark-5x: #084166;
+$radiant-yellow-dark-4x: #084c76;
+$radiant-yellow-dark-3x: #075885;
+$radiant-yellow-dark-2x: #066395;
+$radiant-yellow-dark: #01729a;
+$radiant-yellow: #007cb7;
+$radiant-yellow-light: #009cf7;
+$radiant-yellow-light-2x: #5f9ed2;
+$radiant-yellow-light-3x: #7bb0df;
+$radiant-yellow-light-4x: #95c2ec;
+$radiant-yellow-light-5x: #afd4fa;
+
+// $radiant-yellow-dark-5x: #8c5101;
+// $radiant-yellow-dark-4x: #a15f06;
+// $radiant-yellow-dark-3x: #b76e0c;
+// $radiant-yellow-dark-2x: #ce7e13;
+// $radiant-yellow-dark: #e48e1a;
+// $radiant-yellow: #fc9e21;
+// $radiant-yellow-light: #feab47;
+// $radiant-yellow-light-2x: #feb868;
+// $radiant-yellow-light-3x: #fdc586;
+// $radiant-yellow-light-4x: #fad2a4;
+// $radiant-yellow-light-5x: #f5dfc3;
+
+$beluga-dark-5x: #181715;
+$beluga-dark-4x: #27333e;
+$beluga-dark-3x: #41494f;
+$beluga-dark-2x: #41494f;
+$beluga-dark: #3f3e39;
+$beluga: #4a4843;
+$beluga-light: #595752;
+$beluga-light-2x: #8b8b88;
+$beluga-light-3x: #b5bab6; //storm-gray
+$beluga-light-4x: #d3d4d5;
+$beluga-light-5x: #edf4f8; // #f9fbfd
+
+// [ SOCIAL COLORS ]
+$brand-colors: () !default;
+$brand-colors: map-merge(
+  (
+    "facebook": #3b5998,
+    "google": #dd4b39,
+    "gplus": #dd4b39,
+    "twitter": #00aced,
+    "linkedin": #007bb6,
+    "pinterest": #cb2027,
+    "git": #666666,
+    "tumblr": #32506d,
+    "vimeo": #aad450,
+    "youtube": #bb0000,
+    "flickr": #ff0084,
+    "reddit": #ff4500,
+    "dribbble": #ea4c89,
+    "skype": #00aff0,
+    "instagram": #517fa4,
+    "lastfm": #c3000d,
+    "soundcloud": #ff8800,
+    "behance": #1769ff,
+    "envato": #82b541,
+    "medium": #00ab6c,
+    "spotify": #1db954,
+    "quora": #a82400,
+    "xing": #026466,
+    "snapchat": #fffc00,
+    "telegram": #0088cc,
+    "whatsapp": #075e54,
+    "rss": #f26522
+  ),
+  $brand-colors
+);
+
+$color-accent: $living-coral !default;
+$color-accent-inverse: #ffffff !default;

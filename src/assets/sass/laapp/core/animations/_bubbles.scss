@@ -1,0 +1,56 @@
+@include keyframes(fade-out) {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@include keyframes(bubble-v) {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-$bubbles-vertical-min-height);
+  }
+}
+
+@include keyframes(bubble-v-left) {
+  0% {
+    margin-bottom: 0;
+    opacity: .1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    margin-bottom: $bubbles-vertical-min-height;
+    opacity: 1;
+    left: 0;
+  }
+}
+
+@include keyframes(bubble-v-right) {
+  0% {
+    margin-bottom: 0;
+    opacity: .1;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    margin-bottom: $bubbles-vertical-min-height;
+    opacity: 1;
+    left: 100%;
+  }
+}
+
+@include keyframes(shake-v) {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 20px;
+  }
+}

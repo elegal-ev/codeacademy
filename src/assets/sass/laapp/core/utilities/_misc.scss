@@ -1,0 +1,60 @@
+/* 2.5 Misc ======================================================= */
+
+blockquote {
+    position: relative;
+
+    &:before {
+        @include font-awesome($fa-var-quote-left);
+
+        opacity: 0.5;
+        font-size: $font-size-m;
+        position: absolute;
+        left: -16px;
+        top: -16px;
+    }
+
+    &.team-quote {
+        &:before {
+            left: 0;
+            top: -8px;
+        }
+    }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        .fullscreen#{$infix} {
+            min-height: 100vh;
+        }
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-clear {
+    overflow: unset;
+}
+
+@each $prop in (x, y) {
+    .overflow-#{$prop} { overflow-#{$prop}: auto;  }
+    .overflow-#{$prop}-hidden { overflow-#{$prop}: hidden; }
+    .overflow-#{$prop}-clear { overflow-#{$prop}: unset; }
+}
+
+@each $prop in (top, right, bottom, left) {
+    .#{$prop} { #{$prop}: 0; }
+}
+
+@for $a from 1 through 9 {
+    .op-#{$a} {
+        opacity: $a * .1;
+    }
+
+    .w-#{$a * 10} {
+        width: $a * 10%;
+    }
+}

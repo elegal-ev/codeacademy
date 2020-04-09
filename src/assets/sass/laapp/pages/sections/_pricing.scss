@@ -1,0 +1,131 @@
+.pricing-plans {
+  .shape {
+    position: absolute;
+    box-shadow: -45px $pricing-plans-shape--shadow-size
+      $pricing-plans-shape--shadow-size 5px $pricing-plans-shape--box-shadow;
+    border-radius: $pricing-plans-shape--border-radius;
+    transform: rotate(-35deg);
+    width: $pricing-plans-shape--width;
+    height: $pricing-plans-shape--height;
+
+    &-1 {
+      top: 0;
+      left: 0;
+    }
+
+    &-2 {
+      top: 0;
+      left: 16%;
+    }
+
+    &-3 {
+      top: 40%;
+      left: 75%;
+    }
+
+    &-4 {
+      top: 25%;
+      left: 80%;
+    }
+  }
+
+  .icon-holder {
+    .icon {
+      position: absolute;
+      color: $pricing-plans-icon--color;
+
+      @for $i from 1 through $pricing-plans-icons-count {
+        $style: nth($pricing-plans-icons-map, $i);
+
+        &:nth-child(#{$i}) {
+          top: map-get($style, top) / 100 * 100%;
+          left: map-get($style, left) / 100 * 100%;
+        }
+      }
+    }
+  }
+
+  .keep-sticky {
+    width: 100%;
+    left: 0;
+    position: fixed;
+    top: $navbar-min-height;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 0 !important;
+
+    .btn {
+      width: 50%;
+      border-radius: 0;
+    }
+  }
+}
+
+.pricing-plan {
+  margin-bottom: $price-plan-margin-bottom;
+  border: 1px solid $price-plan-border-color;
+  border-radius: $price-plan-border-radius;
+  background-color: $price-plan-bg-color;
+
+  p {
+    line-height: 1.5em;
+  }
+
+  .pricing-value {
+    font-family: $font-family-complementary;
+    font-size: $price-value-font-size;
+
+    .price {
+      position: relative;
+
+      &:before,
+      &:after {
+        font-size: 0.35em;
+        font-weight: $font-weight-light;
+        font-style: italic;
+      }
+
+      &:before {
+        position: absolute;
+        content: "$";
+        top: 10px;
+        left: -15px;
+      }
+
+      &:after {
+        position: relative;
+        content: "/mo";
+      }
+
+      &.yearly {
+        &:after {
+          content: "/yr";
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 0;
+
+    /** Remove side borders **/
+    &:nth-child(1) {
+      border-right: none;
+    }
+
+    &:nth-child(3) {
+      border-left: none;
+    }
+
+    &.best-value {
+      box-shadow: 0 0 $price-plan-box-shadow-size 0 $price-plan-box-shadow-color;
+    }
+  }
+}
+
+.odometer-inside {
+  display: inline;
+}

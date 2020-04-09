@@ -1,0 +1,69 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Title:   Laapp - Sass & Startup HTML Template - Main CSS file
+ * Author:  http://themeforest.net/user/5studios | www.5studios.net
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[ TABLE OF CONTENTS ]
+
+1. CUSTOM BOOTSTRAP COMPILATION
+2. RESET STYLES
+3. ANIMATIONS
+4. FORMS
+    3.1 - Form
+    3.2 - Buttons
+5. UTILITIES
+    4.1 - Background
+    4.2 - Border
+    4.3 - Devices
+    4.4 - Lists
+    4.5 - Misc
+    4.6 - Overlay
+    4.7 - Position
+    4.8 - Responsive
+    4.9 - Spacing
+    4.10 - Text
+    4.11 - Type
+6. COMPONENTS
+
+5. GENERAL CONTENT STYLES
+    5.1 - Page Loader
+    5.2 - Mockup
+    5.3 - Icons
+6. SECTIONS
+    6.1 - General Styles
+    6.2 - Testimonials
+    6.3 - Footer
+7. PRICING
+    7.1 - General styles
+    7.2 - Pricing heading
+8. PAGE HEADING
+9. CUSTOM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+// Import page styles. Do not remove these references.
+@import "~@fortawesome/fontawesome-free/scss/variables";
+@import "~angled-edges/angled-edges";
+
+// Overriding Bootstrap
+@import "themes/living-coral/variables/override";
+@import "laapp/bootstrap";
+@import "laapp/reset";
+
+// Import theme variables here,
+@import "themes/living-coral/variables";
+
+// Template Styles
+@import "laapp/__variables";
+@import "laapp/__core";
+@import "laapp/__pages";
+
+// Override some core stuff
+@import "laapp/custom";
+
+// Theme you want to use
+@import "themes/living-coral";
+
+.paragraph {
+  font-family: monospace;
+  font-weight: bolder;
+}
