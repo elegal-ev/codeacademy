@@ -1,6 +1,6 @@
-import FirebaseContext, { withFirebase } from './context';
-import getFirebase from './firebase';
+import FirebaseContext, { withFirebase } from "./context"
+import getFirebase from "./firebase"
 
-export default getFirebase;
+export default getFirebase
 
-export { FirebaseContext, withFirebase };
+export { FirebaseContext, withFirebase }

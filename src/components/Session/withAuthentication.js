@@ -1,39 +1,60 @@
-import React, { useContext, useState, useEffect } from "react"
+import React from "react"
 
 import AuthUserContext from "./context"
-import { FirebaseContext } from "../Firebase"
+import { withFirebase } from "../Firebase"
 
-const withAuthentication = ({ children }) => {
-  let _initFirebase = false
-  const [authUser, setAuthUser] = useState(null)
-  const firebase = useContext(FirebaseContext)
+const withAuthentication = Component => {
+  class WithAuthentication extends React.Component {
+    _initFirebase = false
+    constructor(props) {
+      super(props)
+      this.state = {
+        authUser: null,
+      }
+    }
 
-  const firebaseInit = () => {
-    if (firebase && !_initFirebase) {
-      _initFirebase = true
+    firebaseInit = () => {
+      if (this.props.firebase && !this._initFirebase) {
+        this._initFirebase = true
+        this.listener = this.props.firebase.onAuthUserListener(
+          authUser => {
+            localStorage.setItem("authUser", JSON.stringify(authUser))
+            this.setState({ authUser })
+          },
+          () => {
+            localStorage.removeItem("authUser")
+            this.setState({ authUser: null })
+          }
+        )
+      }
+    }
 
-      firebase.onAuthUserListener(
-        authUser => {
-          localStorage.setItem("authUser", JSON.stringify(authUser))
-        },
-        () => {
-          localStorage.removeItem("authUser")
-          setAuthUser(authUser)
-        }
+    componentDidMount() {
+      this.setState({
+        authUser: JSON.parse(localStorage.getItem("authUser")),
+      })
+
+      this.firebaseInit()
+    }
+
+    componentDidUpdate() {
+      this.firebaseInit()
+    }
+
+    componentWillUnmount() {
+      this.listener && this.listener()
+    }
+
+    render() {
+      return (
+        <AuthUserContext.Provider value={this.state.authUser}>
+          <Component {...this.props} />
+        </AuthUserContext.Provider>
       )
     }
   }
 
-  useEffect(() => {
-    setAuthUser(JSON.parse(localStorage.getItem("authUser")))
-    firebaseInit()
-  }, [])
-
-  return (
-    <AuthUserContext.Provider value={authUser}>
-      {children}
-    </AuthUserContext.Provider>
-  )
+  return withFirebase(WithAuthentication)
 }
 
 export default withAuthentication

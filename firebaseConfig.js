@@ -1,7 +1,11 @@
-export const apiKey = `${process.env.GATSBY_API_KEY}`;
-export const authDomain = `${process.env.GATSBY_AUTH_DOMAIN}`;
-export const databaseURL = `${process.env.GATSBY_DATABASE_URL}`;
-export const projectId = `${process.env.GATSBY_PROJEC_TID}`;
-export const storageBucket = `${process.env.GATSBY_STORAGE_BUCKET}`;
-export const messagingSenderId = `${process.env.GATSBY_MESSAGING_SENDER_ID}`;
-export const appId = `${process.env.GATSBY_APP_ID}`;
+const firebaseConfig = {
+apiKey: "AIzaSyCtKjefxDepTe_9ZtH10bF9eHnnyDenlGE",
+  authDomain: "codecamp-dev.firebaseapp.com",
+  databaseURL: "https://codecamp-dev.firebaseio.com",
+  projectId: "codecamp-dev",
+  storageBucket: "codecamp-dev.appspot.com",
+  messagingSenderId: "330692509264",
+  appId: "1:330692509264:web:e4eb2de2fe7d2940651b55"
+}
+
+export default firebaseConfig;

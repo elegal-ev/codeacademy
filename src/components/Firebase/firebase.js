@@ -1,118 +1,39 @@
-import app from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/functions';
+import app from "firebase/app"
+import "firebase/auth"
 
-// const _config = {
-  // apiKey: `${process.env.GATSBY_API_KEY}`,
-  // authDomain: `${process.env.GATSBY_AUTH_DOMAIN}`,
-  // databaseURL: `${process.env.GATSBY_DATABASE_URL}`,
-  // projectId: `${process.env.GATSBY_PROJEC_TID}`,
-  // storageBucket: `${process.env.GATSBY_STORAGE_BUCKET}`,
-  // messagingSenderId: `${process.env.GATSBY_MESSAGING_SENDER_ID}`,
-  // appId: `${process.env.GATSBY_APP_ID}`,
-// }
-
-const config = {
-  apiKey: "AIzaSyCtKjefxDepTe_9ZtH10bF9eHnnyDenlGE",
-  authDomain: "codecamp-dev.firebaseapp.com",
-  databaseURL: "https://codecamp-dev.firebaseio.com",
-  projectId: "codecamp-dev",
-  storageBucket: "codecamp-dev.appspot.com",
-  messagingSenderId: "330692509264",
-  appId: "1:330692509264:web:e4eb2de2fe7d2940651b55"
-};
-
+import config from "../../../firebaseConfig"
 
 class Firebase {
   constructor() {
-    app.initializeApp(config);
-
-    /* Helper */
-
-    this.fieldValue = app.firestore.FieldValue;
-    this.emailAuthProvider = app.auth.EmailAuthProvider;
-
-    /* Firebase APIs */
-
-    this.auth = app.auth();
-    this.db = app.firestore();
-    this.functions = app.functions();
-
-    /* Social Sign In Method Provider */
-
-    this.googleProvider = new app.auth.GoogleAuthProvider();
-    this.facebookProvider = new app.auth.FacebookAuthProvider();
-    this.twitterProvider = new app.auth.TwitterAuthProvider();
+    app.initializeApp(config)
+    this.auth = app.auth()
   }
 
-  // *** Auth API ***
+  // ** Auth API **
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
+  doSignInWithEmailAndPassword = (email, password) =>
+    this.auth.signInWithEmailAndPassword(email, password)
 
-  doSignInWithEmailAndPassword = (email, password) =>{
-    console.log("Loggin in", email, 'with password', password)
-    this.auth.signInWithEmailAndPassword(email, password).then(() => console.log('login successful')).catch(err => console.error('Having an error', err));
-  }
+  doSignOut = () => this.auth.signOut()
 
-  doSignOut = () => this.auth.signOut();
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email)
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-
-  doSendEmailVerification = () =>
-    this.auth.currentUser.sendEmailVerification({
-      url: window.location.href,
-    });
-
-  doPasswordUpdate = password =>
-    this.auth.currentUser.updatePassword(password);
-
-  // *** Merge Auth and DB User API *** //
+  doPasswordUpdate = password => this.auth.doPasswordUpdate(password)
 
   onAuthUserListener = (next, fallback) =>
     this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.user(authUser.uid)
-          .get()
-          .then(snapshot => {
-            const dbUser = snapshot.data();
-
-            // merge auth and db user
-            authUser = {
-              uid: authUser.uid,
-              email: authUser.email,
-              emailVerified: authUser.emailVerified,
-              providerData: authUser.providerData,
-              ...dbUser,
-            };
-
-            next(authUser);
-          });
-      } else {
-        fallback();
-      }
-    });
-
-  // *** User API ***
-
-  user = uid => this.db.doc(`users/${uid}`);
-
-  users = () => this.db.collection('users');
-
-  posts = () => this.db.collection('posts');
-
-  post = post => this.posts().where('slug', '==', post.slug);
+      if (authUser) next(authUser)
+      else fallback()
+    })
 }
+let firebase
 
-let firebase;
-
-function getFirebase(app, auth, database) {
+const getFirebase = () => {
   if (!firebase) {
-    firebase = new Firebase(app, auth, database);
+    firebase = new Firebase()
   }
 
-  return firebase;
+  return firebase
 }
 
-export default getFirebase;
+export default getFirebase

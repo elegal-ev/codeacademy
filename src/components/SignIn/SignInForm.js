@@ -1,6 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
-
-/** Material UI **/
+import React, { useState } from "react"
 import Avatar from "@material-ui/core/Avatar"
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -15,19 +13,16 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 
-/** Gatsby **/
-import { navigate, graphql, useStaticQuery } from "gatsby"
-
-/** Firebase **/
+import { navigate } from "gatsby"
 import { withFirebase } from "../Firebase"
-import FirebaseContext from '../Firebase'
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" to="https://www.xn--elegal-gttingen-gtb.de/">
-        eLegal Göttingen e.V.
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -39,8 +34,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: "100vh",
   },
-  image: props => ({
-    backgroundImage: `url("${props.image}")`,
+  image: {
+    backgroundImage: "url(https://source.unsplash.com/random)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "light"
@@ -48,7 +43,7 @@ const useStyles = makeStyles(theme => ({
         : theme.palette.grey[900],
     backgroundSize: "cover",
     backgroundPosition: "center",
-  }),
+  },
   paper: {
     margin: theme.spacing(8, 4),
     display: "flex",
@@ -68,102 +63,58 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Picture = props => {
-  const classes = useStyles(props)
-  return (
-    <>
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-    </>
-  )
-}
-
-const SignInForm = props => {
-  let classes = useStyles()
-  const [img, setImg] = useState(null)
+const SignInFormBase = props => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState(null)
-  const [_initFirebase, setInitFirebase] = useState(false)
-
-  const firebase = useContext(FirebaseContext)
-
-  // Getting the proper image from gatsby
-  const data = useStaticQuery(graphql`
-    query LoginImageQuery {
-      allFile(filter: { id: { eq: "0db7c53a-6870-567d-bde0-ccdde3508dcf" } }) {
-        edges {
-          node {
-            publicURL
-          }
-        }
-      }
-    }
-  `)
-
-  // intialize firebase
-  const firebaseInit = () => {
-    if (firebase && !_initFirebase) {
-      setInitFirebase(true)
-      initialRequest()
-    }
-  }
-
-  // FIXME redundant?
-  const initialRequest = () => {}
 
   const onSubmit = event => {
-    firebase
+    event.preventDefault()
+    props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
         setEmail("")
         setPassword("")
-        navigate("/lessons/intro")
+        navigate("/lesson/intro")
       })
-      .catch(error => setError(error))
-    event.preventDefault()
+      .catch(error => {
+        setError(error)
+      })
   }
 
-  // handlers
-  const handleEmailField = event => setEmail(event.target.value)
-  const handlePasswordField = event => setPassword(event.target.value)
+  const handleEmail = event => {
+    setEmail(event.target.value)
+  }
+  const handlePassword = event => {
+    setPassword(event.target.value)
+  }
 
-  // initial hook
-  useEffect(() => {
-    // setting image url
-    const imgUrl = data.allFile.edges[0].node.publicURL
-    setImg(imgUrl)
-
-    // init firebase
-    firebaseInit()
-  }, [])
-
+  const classes = useStyles()
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      {img ? (
-        <Picture image={img} />
-      ) : (
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      )}
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Anmeldung
+            Sign in
           </Typography>
+          <form onSubmit={onSubmit} className={classes.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Adresse"
+              label="Email Address"
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={handleEmailField}
+              onChange={handleEmail}
+              value={email}
             />
             <TextField
               variant="outlined"
@@ -171,15 +122,16 @@ const SignInForm = props => {
               required
               fullWidth
               name="password"
-              label="Passwort"
+              label="Password"
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={handlePasswordField}
+              onChange={handlePassword}
+              value={password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Anmeldung speichern"
+              label="Remember me"
             />
             <Button
               type="submit"
@@ -187,27 +139,57 @@ const SignInForm = props => {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={onSubmit}
             >
-              Anmelden
+              Sign In
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Passwort vergessen?
+                  Forgot password?
                 </Link>
               </Grid>
-              <Grid item></Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
             </Grid>
+            {error && error.message}
             <Box mt={5}>
               <Copyright />
             </Box>
-          {error && console.log(error)}
-          {error && <p>{error.message}</p>}
+          </form>
         </div>
       </Grid>
     </Grid>
   )
 }
 
-export default SignInForm
+
+class SignInForm extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  firebaseInit = () => {
+    if(this.props.firebase && !this._initFirebase) {
+      this._initFirebase = true;
+    }
+  }
+
+  componentDidMount() {
+    this.firebaseInit()
+  }
+
+  componentDidUpdate() {
+    this.firebaseInit()
+  }
+
+  render() {
+    return(
+      <SignInFormBase {...this.props}/>
+    )
+  }
+}
+
+export default withFirebase(SignInForm)
