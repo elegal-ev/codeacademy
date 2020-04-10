@@ -13,12 +13,16 @@ import { MDXRenderer } from "gatsby-plugin-mdx";
 // CodeBlock
 import CodeBlock from "../components/molecules/CodeBlock";
 import Highlighter from "../components/molecules/CodeBlock/Highlighter";
+import HinweisBox from '../components/molecules/HinweisBox';
+import InfoBox from '../components/molecules/InfoBox'
 import { Link, navigate } from 'gatsby';
 
 import { Row, Col } from "reactstrap";
 
 const shortcodes = {
     CodeBlock,
+    HinweisBox,
+    InfoBox,
     pre: props => <div {...props} />,
     code: Highlighter
 }

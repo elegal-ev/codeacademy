@@ -1,9 +1,9 @@
 module.exports = {
-    apiKey: "AIzaSyCtKjefxDepTe_9ZtH10bF9eHnnyDenlGE",
-    authDomain: "codecamp-dev.firebaseapp.com",
-    databaseURL: "https://codecamp-dev.firebaseio.com",
-    projectId: "codecamp-dev",
-    storageBucket: "codecamp-dev.appspot.com",
-    messagingSenderId: "330692509264",
-    appId: "1:330692509264:web:e4eb2de2fe7d2940651b55"
+      apiKey: "AIzaSyDgYtuKpeiID9Cr9TV9CYEPXOtBFI6cFIc",
+      authDomain: "elegal-code-camp.firebaseapp.com",
+      databaseURL: "https://elegal-code-camp.firebaseio.com",
+      projectId: "elegal-code-camp",
+      storageBucket: "elegal-code-camp.appspot.com",
+      messagingSenderId: "679950640962",
+      appId: "1:679950640962:web:64f4d33429d8c8fb8f4adb"
 }
