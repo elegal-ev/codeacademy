@@ -15,4 +15,5 @@ Wir wissen, wie wichtig Erfolgserlebnisse sind, um am Ball zu bleiben. Und wir g
 Nach der letzten Einheit ist noch lange nicht Schluss! Wir möchten gerne im Anschluss an dieLerneinheiten noch ein kleines Projekt mit dir auf die Beine stellen, denn wie heißt es so schön: Learning by doing 😁.
 
 ## Verwendete Technologien
-Gatsbyjs
+- Gatsbyjs
+- Firebase Hosting
